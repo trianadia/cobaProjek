@@ -70,7 +70,7 @@ const App = {
         });
 
         Router.register('/profile', () => {
-            Auth.requireAuth(() => this.renderPage(StudentDashboard));
+            Auth.requireAuth(() => this.renderPage(StudentDashboard, ['profile']));
         });
 
         // Admin routes (protected + admin only)
@@ -101,6 +101,18 @@ const App = {
         Router.register('/admin/students', () => {
             Auth.requireAuth(() => {
                 Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['students']));
+            });
+        });
+
+        Router.register('/admin/profile', () => {
+            Auth.requireAuth(() => {
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['profile']));
+            });
+        });
+
+        Router.register('/admin/settings', () => {
+            Auth.requireAuth(() => {
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['settings']));
             });
         });
 

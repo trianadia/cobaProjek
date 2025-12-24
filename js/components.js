@@ -121,14 +121,14 @@ const Components = {
                         <span class="sidebar-nav-title">Akun</span>
                         <ul class="sidebar-nav-items">
                             <li class="sidebar-nav-item">
-                                <a href="#/profile">
+                                <a href="${role === 'admin' ? '#/admin/profile' : '#/profile'}">
                                     <span class="sidebar-nav-icon">${this.icons.user}</span>
                                     <span>Profil</span>
                                 </a>
                             </li>
                             ${role === 'admin' ? `
                             <li class="sidebar-nav-item">
-                                <a href="#/settings">
+                                <a href="#/admin/settings">
                                     <span class="sidebar-nav-icon">${this.icons.settings}</span>
                                     <span>Settings</span>
                                 </a>

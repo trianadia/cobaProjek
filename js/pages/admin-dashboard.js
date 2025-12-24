@@ -40,6 +40,7 @@ const AdminDashboard = {
                 ${Components.sidebar('admin', activePage)}
                 
                 <main class="dashboard-main">
+                    ${activePage === 'dashboard' ? `
                     <header class="dashboard-header">
                         <div>
                             <h1 class="dashboard-title">📊 Admin Dashboard</h1>
@@ -158,6 +159,39 @@ const AdminDashboard = {
                             </button>
                         </div>
                     </section>
+                    ` : activePage === 'profile' ? `
+                    <header class="dashboard-header">
+                        <h1>👤 Profil Saya</h1>
+                        <p>Informasi akun Anda</p>
+                    </header>
+
+                    <section class="profile-card">
+                        <p><b>Nama:</b> ${user.name}</p>
+                        <p><b>NIM:</b> ${user.nim}</p>
+                        <p><b>Email:</b> ${user.email}</p>
+                        <p><b>Fakultas:</b> ${user.faculty}</p>
+                        <p><b>Jurusan:</b> ${user.major}</p>
+                    </section>
+                    ` : activePage === 'settings' ? `
+                    <header class="dashboard-header">
+                        <h1>⚙️ Pengaturan</h1>
+                        <p>Kelola pengaturan sistem</p>
+                    </header>
+
+                    <section class="settings-section">
+                        <div class="settings-card">
+                            <h3>Pengaturan Sistem</h3>
+                            <p>Pengaturan sistem akan ditampilkan di sini.</p>
+                        </div>
+                    </section>
+                    ` : `
+                    <header class="dashboard-header">
+                        <h1>📋 Admin</h1>
+                        <p>Halaman admin</p>
+                    </header>
+                    `
+                    }
+
                 </main>
             </div>
             
