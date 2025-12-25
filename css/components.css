@@ -142,6 +142,28 @@
     border-color: var(--primary-light);
 }
 
+/* ===== PROFILE CARD ===== */
+.profile-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.profile-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.profile-card-body {
+    padding: var(--space-6);
+}
+
+.profile-card-body p {
+    margin-bottom: var(--space-4);
+}
+
 /* ===== BADGES ===== */
 .badge {
     display: inline-flex;

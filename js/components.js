@@ -84,7 +84,11 @@ const Components = {
             { id: 'manage', label: 'Kelola Polling', icon: 'poll', href: '#/admin/polling' },
             { id: 'create', label: 'Buat Polling', icon: 'plus', href: '#/admin/create' },
             { id: 'analytics', label: 'Analytics', icon: 'chart', href: '#/admin/analytics' },
-            { id: 'students', label: 'Mahasiswa', icon: 'users', href: '#/admin/students' }
+            { id: 'students', label: 'Mahasiswa', icon: 'users', href: '#/admin/students' },
+            // Admin quick access to student views without switching menu
+            { id: 'polling-active', label: 'Polling Aktif', icon: 'poll', href: '#/admin/polling-aktif' },
+            { id: 'history', label: 'Riwayat Vote', icon: 'history', href: '#/admin/riwayat' },
+            { id: 'results', label: 'Hasil Voting', icon: 'chart', href: '#/admin/hasil' }
         ];
 
         const navItems = role === 'admin' ? adminNav : studentNav;
@@ -126,14 +130,6 @@ const Components = {
                                     <span>Profil</span>
                                 </a>
                             </li>
-                            ${role === 'admin' ? `
-                            <li class="sidebar-nav-item">
-                                <a href="#/settings">
-                                    <span class="sidebar-nav-icon">${this.icons.settings}</span>
-                                    <span>Settings</span>
-                                </a>
-                            </li>
-                            ` : ''}
                             <li class="sidebar-nav-item">
                                 <a href="#" onclick="Auth.logout(); return false;">
                                     <span class="sidebar-nav-icon">${this.icons.logout}</span>

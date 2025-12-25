@@ -2,8 +2,6 @@
 // VoteKampus - Main Application
 // ============================================
 
-localStorage.removeItem('votekampus_user');
-
 const App = {
     // Current page instance for cleanup
     currentPage: null,
@@ -65,12 +63,14 @@ const App = {
             Auth.requireAuth(() => this.renderPage(StudentDashboard, ['history']));
         });
 
+        // Results page should render the dedicated ResultsPage (with charts)
         Router.register('/results', () => {
-            Auth.requireAuth(() => this.renderPage(StudentDashboard, ['results']));
+            Auth.requireAuth(() => this.renderPage(ResultsPage));
         });
 
+        // Profile should render the ProfilePage and keep current role's sidebar
         Router.register('/profile', () => {
-            Auth.requireAuth(() => this.renderPage(StudentDashboard));
+            Auth.requireAuth(() => this.renderPage(ProfilePage));
         });
 
         // Admin routes (protected + admin only)
@@ -101,6 +101,25 @@ const App = {
         Router.register('/admin/students', () => {
             Auth.requireAuth(() => {
                 Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['students']));
+            });
+        });
+
+        // Admin quick access to student-style views without changing sidebar
+        Router.register('/admin/polling-aktif', () => {
+            Auth.requireAuth(() => {
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['polling-active']));
+            });
+        });
+
+        Router.register('/admin/riwayat', () => {
+            Auth.requireAuth(() => {
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['history']));
+            });
+        });
+
+        Router.register('/admin/hasil', () => {
+            Auth.requireAuth(() => {
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['results']));
             });
         });
 
