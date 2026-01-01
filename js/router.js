@@ -25,19 +25,30 @@ const Router = {
     
     // Handle route changes
     handleRoute() {
-    const hash = window.location.hash.slice(1) || '/';
-    const segments = hash.split('/').filter(Boolean);
+        const hash = window.location.hash.slice(1) || '/';
+        const segments = hash.split('/').filter(Boolean);
 
-    const routePath = '/' + segments.join('/');
-    const params = segments.slice(1);
+        const fullPath = '/' + segments.join('/');
+        const basePath = '/' + (segments[0] || '');
+        const params = segments.slice(1);
 
-    if (this.routes[routePath]) {
-        this.currentRoute = routePath;
-        this.routes[routePath](params);
-    } else {
+        // Prefer exact match first (e.g., '/admin/polling')
+        if (this.routes[fullPath]) {
+            this.currentRoute = fullPath;
+            this.routes[fullPath]([]);
+            return;
+        }
+
+        // Fallback: base route with params (e.g., '/vote/1' -> '/vote', ['1'])
+        if (this.routes[basePath]) {
+            this.currentRoute = basePath;
+            this.routes[basePath](params);
+            return;
+        }
+
+        // Unknown route -> go home
         this.navigate('/');
-    }
-},
+    },
 
 
     // Get current route

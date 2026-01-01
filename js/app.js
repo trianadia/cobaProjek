@@ -48,7 +48,13 @@ const App = {
 
         // Student routes (protected)
         Router.register('/dashboard', () => {
-            Auth.requireAuth(() => this.renderPage(StudentDashboard, ['dashboard']));
+            Auth.requireAuth(() => {
+                if (Auth.isAdmin()) {
+                    Router.navigate('/admin');
+                    return;
+                }
+                this.renderPage(StudentDashboard, ['dashboard']);
+            });
         });
 
         Router.register('/polling', () => {
@@ -113,13 +119,14 @@ const App = {
 
         Router.register('/admin/riwayat', () => {
             Auth.requireAuth(() => {
-                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['history']));
+                // Use 'riwayat' so sidebar highlights the correct menu
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['riwayat']));
             });
         });
 
         Router.register('/admin/hasil', () => {
             Auth.requireAuth(() => {
-                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['results']));
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['hasil']));
             });
         });
 

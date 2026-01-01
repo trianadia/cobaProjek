@@ -58,7 +58,7 @@ const Components = {
                     
                     <div class="navbar-actions">
                         ${isLoggedIn
-                ? `<a href="#/dashboard" class="btn btn-primary">Dashboard</a>`
+                ? `<a href="${Auth.isAdmin() ? '#/admin' : '#/dashboard'}" class="btn btn-primary">Dashboard</a>`
                 : `<a href="#/login" class="btn btn-primary">Masuk</a>`
             }
                         <button class="navbar-mobile-toggle" onclick="App.toggleMobileMenu()">
@@ -81,14 +81,11 @@ const Components = {
 
         const adminNav = [
             { id: 'dashboard', label: 'Dashboard', icon: 'dashboard', href: '#/admin' },
-            { id: 'manage', label: 'Kelola Polling', icon: 'poll', href: '#/admin/polling' },
+            { id: 'polling', label: 'Kelola Polling', icon: 'poll', href: '#/admin/polling' },
             { id: 'create', label: 'Buat Polling', icon: 'plus', href: '#/admin/create' },
-            { id: 'analytics', label: 'Analytics', icon: 'chart', href: '#/admin/analytics' },
             { id: 'students', label: 'Mahasiswa', icon: 'users', href: '#/admin/students' },
-            // Admin quick access to student views without switching menu
-            { id: 'polling-active', label: 'Polling Aktif', icon: 'poll', href: '#/admin/polling-aktif' },
-            { id: 'history', label: 'Riwayat Vote', icon: 'history', href: '#/admin/riwayat' },
-            { id: 'results', label: 'Hasil Voting', icon: 'chart', href: '#/admin/hasil' }
+            { id: 'riwayat', label: 'Riwayat Vote', icon: 'history', href: '#/admin/riwayat' },
+            { id: 'hasil', label: 'Hasil Voting', icon: 'chart', href: '#/admin/hasil' }
         ];
 
         const navItems = role === 'admin' ? adminNav : studentNav;
@@ -125,7 +122,7 @@ const Components = {
                         <span class="sidebar-nav-title">Akun</span>
                         <ul class="sidebar-nav-items">
                             <li class="sidebar-nav-item">
-                                <a href="#/profile">
+                                <a href="#/profile" class="${activePage === 'profile' ? 'active' : ''}">
                                     <span class="sidebar-nav-icon">${this.icons.user}</span>
                                     <span>Profil</span>
                                 </a>
