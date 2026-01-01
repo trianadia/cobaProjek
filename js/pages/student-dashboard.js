@@ -354,8 +354,18 @@ const StudentDashboard = {
             			<h2>📊 Hasil Voting</h2>
             			<p>Halaman hasil voting.</p>
        			    ` : activePage === 'profile' ? `
-            			<h2>👤 Profil Saya</h2>
-            			<p>Halaman profil.</p>
+            			<header class="dashboard-header">
+                        <h1>👤 Profil Saya</h1>
+                        <p>Informasi akun Anda</p>
+                    </header>
+
+                    <section class="profile-card">
+                        <p><b>Nama:</b> ${user.name}</p>
+                        <p><b>NIM:</b> ${user.nim}</p>
+                        <p><b>Email:</b> ${user.email}</p>
+                        <p><b>Fakultas:</b> ${user.faculty}</p>
+                        <p><b>Jurusan:</b> ${user.major}</p>
+                    </section>
         		    ` : `
             			<h2>Dashboard</h2>
         		    `

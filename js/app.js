@@ -130,6 +130,18 @@ const App = {
             });
         });
 
+        Router.register('/admin/profile', () => {
+            Auth.requireAuth(() => {
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['profile']));
+            });
+        });
+
+        Router.register('/admin/settings', () => {
+            Auth.requireAuth(() => {
+                Auth.requireAdmin(() => this.renderPage(AdminDashboard, ['settings']));
+            });
+        });
+
     },
 
     // Render a page
