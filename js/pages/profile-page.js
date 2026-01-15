@@ -96,6 +96,11 @@ const ProfilePage = {
                     </section>
 
                     <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+                        
+                        .dashboard-main {
+                            font-family: 'Lora', serif;
+                        }
                         .card {
                             background: white;
                             border-radius: 12px;
