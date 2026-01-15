@@ -2,7 +2,7 @@ const ProfilePage = {
     render() {
         const user = Auth.getUser();
         const role = user?.role === 'admin' ? 'admin' : 'student';
-        
+
         // Generate avatar dengan inisial
         const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
         const avatarBg = user.role === 'admin' ? '#667EEA' : '#10B981';
